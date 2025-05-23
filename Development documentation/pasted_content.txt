@@ -1,0 +1,84 @@
+Project Title: career-options_explorer
+Mission Statement (It should be a mobile first web application, ios design style)
+Produce a Sprint-Book (one major section per sprint) that can guide a below-average AI engineer using only VS Code on a laptop.
+Parsing is 100 % local. Feel free to suggest tasteful, creative enhancements (UX, parser heuristics, tiny “wow” moments) as long as core scope stays rock-solid.
+________________________________________
+0 · Global Constraints & Tech Choices
+Layer	Choice	Notes
+Front-end	React 18 + Vite + TypeScript	TailwindCSS design system.
+Back-end	Node 20 LTS + Express + TypeScript	Minimal middleware.
+Database	PostgreSQL 16	Local install, port 5432.
+DOCX Parsing	mammoth → HTML stream → cheerio walker → JSON	Must correctly parse headings such as “Career Snapshot”, “Role Overview”, “Skills Needed”, etc.
+Tagging	compromise + TF-IDF utility	Generates top-10 keywords → maps to fixed taxonomy.
+Testing	Jest (runs inside VS Code Test Explorer)	Use jest + ts-jest; no other test runners.
+VCS	Git + GitHub remote	1 main branch + feature branches.
+Extras	No Docker, no CI/CD, no cloud APIs.	
+________________________________________
+1 · Information Architecture
+Manus AI must provide:
+1.	Site-Map Diagram – pages & URLs.
+2.	Data-Flow Diagram – DOCX → Parser → DB → API → React.
+3.	ER Diagram – tables & relations.
+4.	Component Tree – React component hierarchy for major pages.
+Diagrams can be Mermaid so devs can paste into VS Code preview.
+________________________________________
+2 · Dependency List (exact packages + purpose)
+Category	Package	Why Needed	VS Code-specific tip
+Runtime	express	REST API	n/a
+	cors, body-parser	Middleware	n/a
+	slugify	Career URL slugs	n/a
+	mammoth	DOCX→HTML	n/a
+	cheerio	HTML DOM walk	n/a
+	compromise	Keyword extraction	n/a
+	pg	PostgreSQL driver	use @vscode/sql ext for quick queries
+Front-end	react, react-dom, vite	Core UI	Vite ext for hot reload
+	tailwindcss, postcss, autoprefixer	Styling	Tailwind IntelliSense
+Dev/Test	typescript, ts-node-dev	TS & live reload	TS Hero ext
+	jest, ts-jest	Unit tests	Jest Runner ext
+	supertest	API tests	n/a
+	@types/*	Type defs	n/a
+(Manus AI: include install commands and minimal config snippets in Sprint 0.)			
+________________________________________
+3 · Sprint Road-map
+#	Codename	Theme	Time-box
+0	Bootstrap	Toolchain, Git, empty React page	2 days
+1	Word Wizard	Local DOCX parser module	4 days
+2	Vault	DB schema & repository layer	4 days
+3	Gatekeeper	Express API incl. /api/admin/upload	5 days
+4	Scribe	Admin UI – upload & preview 50 + careers	5 days
+5	Explorer	Public Home, Search, Detail	6 days
+6	Facet	Tag/category filters, pagination, perf	3 days
+7	Polish	A11y, Lighthouse > 90, README, release	3 days
+________________________________________
+4 · Sprint Section Template
+Manus AI, repeat the 6-part template below for every sprint:
+1.	Narrative Goal – a short, motivational story of what we accomplish and why it matters.
+2.	Back-of-the-Envelope Design – bullet or Mermaid sketches showing architecture as of this sprint.
+3.	Task Checklist – granular tasks (≤ 1 day each). Include file paths, VS Code commands, code stubs.
+4.	Creative Add-Ons (Stretch) – optional ideas (UX flourishes, parser heuristics, micro-copy, DB index recommendations).
+5.	Run & Verify – step-by-step commands in VS Code integrated terminal + VS Code Test Explorer actions:
+o	build/start command
+o	how to open Jest panel and run tests
+o	manual browser checks (URL to hit, visual cue to confirm)
+o	success criteria (green tests, console output, UI element)
+6.	Artifacts to Commit – branch name, mandatory files, PR checklist.
+________________________________________
+5 · Quality Bar & Non-Negotiables
+•	Unit tests only; ≥ 85 % line coverage on parser, DB, API layers.
+•	Home → Search → Detail load < 400 ms average on local.
+•	WCAG 2.1 AA compliance; Lighthouse ≥ 90 (P & A11y).
+•	Parser must ingest a DOCX like the sample provided and auto-detect sections such as “Career Snapshot,” “Role Overview,” “Skills Needed,” and nest them correctly. 
+•	No external services, containers, or third-party test runners.
+________________________________________
+6 · Encourage Creativity
+After core tasks, you may propose:
+•	Pastel gradient hero with gentle scroll-parallax (Stretch).
+•	npm run parse:watch script that reparses any DOCX dropped into /docs (Stretch).
+•	Synonym expansion for tag generation using WordNet JSON (Stretch).
+Mark every such idea Stretch so devs can skip if they lack time.
+________________________________________
+7 · Final Deliverable
+A single Markdown Sprint-Book titled “Career Options Explorer – Build Guide v1.0”.
+Each sprint section must be copy-pastable into GitHub Wiki pages.
+End of Prompt
+

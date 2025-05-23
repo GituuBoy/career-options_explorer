@@ -1,0 +1,5 @@
+1 · Narrative Goal
+
+In this foundational sprint we’re setting up the development environment and project structure that will serve as the launch‑pad for our Career Options Explorer application. By the end of these two days we’ll have a clean, organised code‑base with the basic tool‑chain configured, Git version‑control established with pre‑commit hooks, and an empty but functional React application rendering in the browser, styled with our initial iOS‑inspired theme.
+
+This sprint is about building a solid foundation—ensuring our development tools are properly configured, our TypeScript setup is working correctly, and our project structure follows best practices. While there won’t be much visible functionality yet, this groundwork will enable smooth, efficient development in subsequent sprints.
